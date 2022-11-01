@@ -1,0 +1,13 @@
+# AmazonChallenges Description
+- I have made my own framework from scratch using POM design pattern for this assignment or challenge.
+- The test could be run in chrome by default. It can also be run in Firefox and IE if we change the browser param in properties file and made change accordingly in the Base class.
+- The Base class is used to create helper methods such as to initialize webdriver, to get and take screenshot path if a test case fails and to quit browser.
+- The ExtentReportTestNG class is also has a helper method called getReportObject, which is used to set the reports folder, report name, document titile, and the tester.
+   - I have also enabled parallel execution of tests possible (though I have one test class) by using ThreadLocal
+   - Parallel execution is also configured in the testng.xml file
+   - To make this happen, I have used and configured 'maven-surefire-plugin' in pom.xml
+- I have also created a Listenes class which extends the Base Class and implements the ITestListener. This class sets what should be done when on test start, on test success, on test failure (take screenshot and attach it to the report ["reports/index.html]"), on finish, etc.
+- We have three ways to execute the tests:
+   - Right click on the test class, AmazonTests, and select Run As > TestNG Test
+   - Right click on the testng.xml file and select Run As > TestNG Suite
+   - Using Jenkins: create a job in jenkins and provide the git link and give 'test' command in the Build Steps
