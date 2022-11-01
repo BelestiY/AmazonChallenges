@@ -11,6 +11,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class Base {
@@ -30,16 +31,16 @@ public class Base {
 		if(browserName.equals("chrome")) {
 			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\java\\resources\\chromedriver.exe");
 			driver = new ChromeDriver();
+		} else if (browserName.equals("edge")) {
+			System.setProperty("webdriver.edge.driver", System.getProperty("user.dir") + "\\src\\main\\java\\resources\\msedgedriver.exe");
+			driver = new EdgeDriver();
 		} else if (browserName.equals("firefox")) {
-//			System.setProperty("webdriver.chrome.driver", System.getProperty("user.dir") + "\\src\\main\\java\\resources\\chromedriver.exe");
+			System.setProperty("webdriver.gecko.driver", System.getProperty("user.dir") + "\\src\\main\\java\\resources\\geckodriver.exe");
 			driver = new FirefoxDriver();
-		} else if (browserName.equals("IE")) {
-			//System.setProperty("webdriver.chrome.driver", driverPath);
-			// driver = new FirefoxDriver();
-		}
+		} 
 		
 		
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 		return driver;
 	}
